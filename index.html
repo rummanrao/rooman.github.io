@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rooman Sajid Rao — Academic Writer & Researcher</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1714;
+    --ink-soft: #4a4540;
+    --ink-muted: #8c8580;
+    --paper: #faf8f4;
+    --paper-warm: #f2ede4;
+    --accent: #b5460f;
+    --accent-light: #f5e6de;
+    --rule: #d8d0c4;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,248,244,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 60px;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 3rem 5rem 5rem;
+    border-right: 1px solid var(--rule);
+  }
+  .hero-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 32px; height: 1px;
+    background: var(--accent);
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-bio {
+    font-size: 16px;
+    color: var(--ink-soft);
+    max-width: 440px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover { background: #943a0c; }
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--rule);
+  }
+  .btn-outline:hover { border-color: var(--ink); background: var(--paper-warm); }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 5rem 3rem 5rem 4rem;
+    background: var(--paper-warm);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-right::before {
+    content: '"';
+    font-family: var(--serif);
+    font-size: 28rem;
+    color: var(--rule);
+    position: absolute;
+    top: -6rem; right: -2rem;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .stat-item {
+    border-left: 2px solid var(--accent);
+    padding-left: 1rem;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .hero-quote {
+    position: relative; z-index: 1;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem 5rem; }
+  section:nth-child(even) { background: var(--paper-warm); }
+
+  .section-header {
+    display: flex; align-items: baseline; gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+  .section-num {
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .section-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .service-card {
+    background: var(--paper);
+    padding: 2.5rem 2rem;
+    transition: background 0.2s;
+  }
+  .service-card:hover { background: var(--accent-light); }
+  .service-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .service-name {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+  .service-desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  .service-price {
+    margin-top: 1.25rem;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-text p {
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.9;
+    margin-bottom: 1.25rem;
+  }
+  .about-text p strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .about-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+  .sidebar-block {
+    padding: 1.5rem;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--accent);
+  }
+  .sidebar-block h4 {
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+  .sidebar-block ul {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .sidebar-block ul li {
+    font-size: 13px;
+    color: var(--ink-soft);
+    padding-left: 1rem;
+    position: relative;
+  }
+  .sidebar-block ul li::before {
+    content: '—';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: 11px;
+  }
+
+  /* PUBLICATION */
+  .pub-card {
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent);
+    padding: 2rem 2.5rem;
+    background: var(--paper);
+    display: flex; gap: 2rem; align-items: flex-start;
+  }
+  .pub-badge {
+    flex-shrink: 0;
+    width: 56px; height: 56px;
+    background: var(--accent);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+    font-size: 11px;
+    text-align: center;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .pub-content { flex: 1; }
+  .pub-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+  .pub-meta {
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin-bottom: 1rem;
+  }
+  .pub-doi {
+    font-size: 13px;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .pub-doi:hover { border-color: var(--accent); }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .skill-pill {
+    padding: 0.85rem 1.25rem;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .skill-pill:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-light);
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .contact-intro {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--ink);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+  .contact-link:hover {
+    border-color: var(--accent);
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+  .contact-link-icon {
+    width: 36px; height: 36px;
+    background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .contact-right {
+    padding: 2.5rem;
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .contact-right h3 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--paper);
+  }
+  .contact-right p {
+    font-size: 14px;
+    color: #a89e94;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .contact-right .btn-primary {
+    width: 100%;
+    justify-content: center;
+    background: var(--accent);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 5rem;
+    border-top: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 12px;
+    color: var(--ink-muted);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * {
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-tag { animation-delay: 0.1s; }
+  .hero-name { animation-delay: 0.2s; }
+  .hero-bio { animation-delay: 0.3s; }
+  .hero-cta { animation-delay: 0.4s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 4rem 1.5rem 3rem; border-right: none; border-bottom: 1px solid var(--rule); }
+    .hero-right { padding: 3rem 1.5rem 4rem; }
+    section { padding: 4rem 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Rooman Sajid Rao</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#publication">Publication</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding: 0;">
+  <div class="hero-left">
+    <div class="hero-tag">Academic Writer & Researcher</div>
+    <h1 class="hero-name">Rooman<br><em>Sajid Rao</em></h1>
+    <p class="hero-bio">MPhil graduate, published researcher, and academic writer with expertise in media studies, communication, and cultural behaviour. Helping students and researchers produce rigorous, well-crafted academic work.</p>
+    <div class="hero-cta">
+      <a href="https://www.fiverr.com" target="_blank" class="btn btn-primary">Hire on Fiverr →</a>
+      <a href="#about" class="btn btn-outline">Learn More</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <p class="hero-quote">"Research is not just about finding answers — it's about asking the right questions with rigour and intellectual honesty."</p>
+    <div class="stat-grid">
+      <div class="stat-item">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Published paper</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Years writing</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">MPhil</div>
+        <div class="stat-label">Punjab University</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Languages</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Services</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📄</div>
+      <h3 class="service-name">Research Papers</h3>
+      <p class="service-desc">Fully researched, properly cited academic papers across social sciences, media, communication, business, and more.</p>
+      <div class="service-price">From $15</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📚</div>
+      <h3 class="service-name">Thesis & Dissertation</h3>
+      <p class="service-desc">Chapter-by-chapter thesis writing with strong theoretical frameworks, literature review, methodology, and analysis.</p>
+      <div class="service-price">From $40</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔍</div>
+      <h3 class="service-name">Literature Review</h3>
+      <p class="service-desc">Comprehensive, critically analysed literature reviews that synthesise existing scholarship with clarity and depth.</p>
+      <div class="service-price">From $40</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✏️</div>
+      <h3 class="service-name">Assignments & Essays</h3>
+      <p class="service-desc">Well-structured essays and assignments for undergraduate and postgraduate students across all disciplines including BBA and Supply Chain Management.</p>
+      <div class="service-price">From $15</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔖</div>
+      <h3 class="service-name">Citations & References</h3>
+      <p class="service-desc">APA, Chicago, Harvard, and MLA citation formatting. Reference list compilation, in-text citation correction, and bibliography creation.</p>
+      <div class="service-price">From $10</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3 class="service-name">SPSS & Data Analysis</h3>
+      <p class="service-desc">Quantitative data analysis, SPSS output interpretation, and results write-up for survey-based and empirical research.</p>
+      <div class="service-price">From $30</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">About Me</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I am an <strong>MPhil graduate in Public Relations and Advertising</strong> from the University of the Punjab, with a published research paper in the <em>Consumer Behavior Review</em> — an international peer-reviewed journal.</p>
+      <p>My academic interests centre on the intersection of <strong>social media, digital activism, cultural behaviour, and generational identity</strong> in South Asia. My MPhil thesis applied quantitative methods to explore how cultural dimensions shape consumer decisions among Gen Z.</p>
+      <p>Beyond my own research, I have spent over four years delivering <strong>high-quality academic writing</strong> for students and researchers across disciplines — from media and communication studies to BBA, supply chain management, business studies, and social sciences.</p>
+      <p>I am currently preparing for PhD applications focusing on <strong>Gen Z stealth activism, coded resistance, and digital repression in South Asia</strong> — bringing the same rigour and curiosity to every piece of writing I produce.</p>
+    </div>
+    <div class="about-sidebar">
+      <div class="sidebar-block">
+        <h4>Education</h4>
+        <ul>
+          <li>MPhil, Public Relations & Advertising — University of the Punjab (2023–2025)</li>
+          <li>BA, Communication & Media Studies — University of the Punjab (2018–2022)</li>
+        </ul>
+      </div>
+      <div class="sidebar-block">
+        <h4>Research Interests</h4>
+        <ul>
+          <li>Digital activism in South Asia</li>
+          <li>Gen Z behaviour & identity</li>
+          <li>Consumer psychology</li>
+          <li>Cultural identity & media</li>
+          <li>Traditional vs social media</li>
+        </ul>
+      </div>
+      <div class="sidebar-block">
+        <h4>Languages</h4>
+        <ul>
+          <li>English — Fluent</li>
+          <li>Urdu — Native</li>
+          <li>Punjabi — B2</li>
+          <li>Hindi — B1</li>
+          <li>Spanish — A1</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATION -->
+<section id="publication">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Publication</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="pub-card">
+    <div class="pub-badge">CBR<br>2025</div>
+    <div class="pub-content">
+      <h3 class="pub-title">Cultural orientation and impulse buying behavior among Gen-Z: A survey-based analysis</h3>
+      <p class="pub-meta">Rao, R. S., & Latif, F. (2025) · Consumer Behavior Review, 9(1), e-267539 · University of the Punjab</p>
+      <a href="https://doi.org/10.51359/2526-7884.2025.267539" target="_blank" class="pub-doi">DOI: 10.51359/2526-7884.2025.267539 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Skills & Tools</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-pill">SPSS</div>
+    <div class="skill-pill">Quantitative Research</div>
+    <div class="skill-pill">Literature Reviews</div>
+    <div class="skill-pill">APA Citation</div>
+    <div class="skill-pill">Chicago Citation</div>
+    <div class="skill-pill">Harvard Citation</div>
+    <div class="skill-pill">Research Design</div>
+    <div class="skill-pill">Data Interpretation</div>
+    <div class="skill-pill">Academic Writing</div>
+    <div class="skill-pill">Critical Analysis</div>
+    <div class="skill-pill">Survey Design</div>
+    <div class="skill-pill">MS Excel</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Get in Touch</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="contact-grid">
+    <div>
+      <p class="contact-intro">Ready to get started? Reach out through any of these channels.</p>
+      <div class="contact-links">
+        <a href="mailto:rooman0007@gmail.com" class="contact-link">
+          <div class="contact-link-icon">✉</div>
+          rooman0007@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/rooman-sajid-rao" target="_blank" class="contact-link">
+          <div class="contact-link-icon">in</div>
+          linkedin.com/in/rooman-sajid-rao
+        </a>
+        <a href="https://rooman-sajid-rao.jimdosite.com/portfolio/" target="_blank" class="contact-link">
+          <div class="contact-link-icon">🌐</div>
+          rooman-sajid-rao.jimdosite.com
+        </a>
+      </div>
+    </div>
+    <div class="contact-right">
+      <h3>Hire Me on Fiverr</h3>
+      <p>Need a research paper, thesis chapter, literature review, or assignment? Message me on Fiverr to discuss your requirements before placing an order.</p>
+      <a href="https://www.fiverr.com" target="_blank" class="btn btn-primary">View Fiverr Gig →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Rooman Sajid Rao</span>
+  <span>MPhil Researcher · Academic Writer · Published Author</span>
+  <span>ORCID: 0009-0009-1299-3429</span>
+</footer>
+
+</body>
+</html>
